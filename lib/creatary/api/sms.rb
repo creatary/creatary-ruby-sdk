@@ -25,7 +25,7 @@ module Creatary
       transaction_id = data["transaction_id"]
 
       begin
-        dispatch_to_server('receive_sms', from_user, to_app, body, transaction_id)
+        dispatch_to_handler('receive_sms', from_user, to_app, body, transaction_id)
         response.status = 200
         return ''
       rescue Error => error
