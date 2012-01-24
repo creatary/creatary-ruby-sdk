@@ -1,32 +1,32 @@
-The telco asset marketplace Ruby gem
+The Creatary Ruby gem
 ====================================
-A Ruby wrapper for the Telco Asset Marketplace REST APIs
+A Ruby wrapper for the Creatary REST APIs
 
 Installation
 ------------
-	gem install tam
+	gem install creatary-sdk
 	
 Documentation
 -------------
-<https://code.telcoassetmarketplace.com>
+<https://creatary.com>
 
 How to Use
 ----------
 If you are using rails then:
 
-1. Add the tam gem to your Gemfile
+1. Add the creatary-sdk gem to your Gemfile
 
 ```ruby
-	gem 'tam'
+	gem 'creatary-sdk'
 ```
 
-2. Create a tam.yml file in config with following contents:
+2. Create a creatary.yml file in config with following contents:
 
 ```yaml
 	development: &defaults
 		consumer_key:     # the consumer key generated in telcoassetmarketplace.com for you application
 		consumer_secret:  # the consumer secret generated in telcoassetmarketplace.com for you application
-		consumer_handler: # the of the class that implements the telcoassetmarketplace handler logic
+		consumer_handler: # the of the class that implements the Creatary handler logic
 	test:
 		<<: *defaults
 	production:
@@ -36,19 +36,19 @@ If you are using rails then:
 3. Add following route to your routes.rb
 
 ```ruby
-	match '/tamapi/(:string)' => TAM::API 	# you can replace 'tamapi' with any other namespace
+	match '/creatary/(:string)' => Creatary::API 	# you can replace 'creatary' with any other namespace
 ```
 	
-4. Implement the telcoassetmarketplace handler logic (e.g.: tam_handler.rb in helpers)
+4. Implement the Creatary handler logic (e.g.: creatary_handler.rb in helpers)
 
 ```ruby
-	class TamHandler
+	class CreataryHandler
 	  def authorized(user, session)
-		# should return the URL to which telcoassermarketplace should redirect
+		# should return the URL to which Creatary should redirect
 	  end
 
 	  def denied(session)
-		# should return the URL to which telcoassermarketplace should redirect
+		# should return the URL to which Creatary should redirect
 	  end
 	
 	  def receive_sms(from_user, to_app, body)
@@ -60,7 +60,7 @@ If you are using rails then:
 5. The routes exposed by the gem in your rails application are:
 
 ```ruby
-	/tamapi/authorize
-	/tamapi/receive_sms		# use this one (complement to form absolute path) as SMS URL when registering your application in telcoassetmarketplace.com
-	/tamapi/oauth_callback  # use this one (complement to form absolute path) as OAUTH callback URL when registering your application in telcoassetmarketplace.com
+	/creatary/authorize
+	/creatary/receive_sms		# use this one (complement to form absolute path) as SMS URL when registering your application in telcoassetmarketplace.com
+	/creatary/oauth_callback  # use this one (complement to form absolute path) as OAUTH callback URL when registering your application in telcoassetmarketplace.com
 ```
