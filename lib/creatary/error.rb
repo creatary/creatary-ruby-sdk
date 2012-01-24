@@ -1,5 +1,5 @@
-module TAM
-  # Custom error class for rescuing from all telco asset marketplace errors
+module Creatary
+  # Custom error class for rescuing from all Creatary errors
   class Error < StandardError
     attr_reader :body
 
@@ -34,7 +34,7 @@ module TAM
 
   class UnexpectedError < Error; end  
   
-  # Raised when one of the telco asset marketplace services is not available
+  # Raised when one of the Creatary services is not available
   class ServiceUnavailable < Error; end
 end
   

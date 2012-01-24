@@ -1,7 +1,7 @@
-module TAM
+module Creatary
   # Defines constants and methods related to configuration
   module Configuration
-    # An array of valid keys in the options hash when configuring a {TAM::API}
+    # An array of valid keys in the options hash when configuring a {Creatary::API}
     VALID_OPTIONS_KEYS = [
       :consumer_key,
       :consumer_secret,
@@ -22,8 +22,8 @@ module TAM
         begin
           @consumer_handler = Object.const_get(consumer_handler).new
         rescue NameError => error
-          LOGGER.error 'Application has provided an invalid telco asset marketplace consumer_handler: ' + TAM.consumer_handler
-          raise InvalidConsumerHandler.new 'Application has provided an invalid telco asset marketplace consumer_handler: ' + TAM.consumer_handler
+          LOGGER.error 'Application has provided an invalid Creatary consumer_handler: ' + Creatary.consumer_handler
+          raise InvalidConsumerHandler.new 'Application has provided an invalid Creatary consumer_handler: ' + Creatary.consumer_handler
         end
       else
         @consumer_handler = consumer_handler
@@ -75,7 +75,7 @@ module TAM
       self.authorize_path     = '/web/authorize'
       self.oauth_scheme       = :query_string
       self.oauth_http_method  = :get
-      self.callback_path      = 'tamapi'
+      self.callback_path      = 'creatary'
       self
     end
   end  

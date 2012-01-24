@@ -1,10 +1,10 @@
 require 'sinatra'
 require 'oauth'
 require 'json'
-require 'tam/user'
+require 'creatary/user'
 
-# SMS part of the telco asset marketplace REST API
-module TAM
+# SMS part of the Creatary REST API
+module Creatary
   class API
     # URL handler for receiving SMS
     # After receiving an SMS, the configured 
@@ -25,7 +25,7 @@ module TAM
       transaction_id = data["transaction_id"]
 
       begin
-        dispatch_to_handler('receive_sms', from_user, to_app, body, transaction_id)
+        dispatch_to_server('receive_sms', from_user, to_app, body, transaction_id)
         response.status = 200
         return ''
       rescue Error => error
@@ -40,7 +40,7 @@ module TAM
       if transaction_id
         payload["transaction_id"] = transaction_id
       end
-      response = dispatch_to_tam(:post, '/api/1/sms/send', to_user, JSON.generate(payload))
+      response = dispatch_to_server(:post, '/api/1/sms/send', to_user, JSON.generate(payload))
       JSON.parse response
     end
   end

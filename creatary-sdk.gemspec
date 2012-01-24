@@ -1,5 +1,5 @@
 # coding: UTF-8
-require File.expand_path('../lib/tam/version', __FILE__)
+require File.expand_path('../lib/creatary/version', __FILE__)
 
 Gem::Specification.new do |s|
   s.add_runtime_dependency('sinatra', '~> 1.2.1')
@@ -13,14 +13,14 @@ Gem::Specification.new do |s|
   s.add_development_dependency('webmock', '~> 1.7.0')
   s.add_development_dependency('simplecov', '~> 0.5.0')
     
-  s.name = "tam"
-  s.version = TAM::VERSION.dup
+  s.name = "creatary-sdk"
+  s.version = Creatary::VERSION.dup
   s.platform = Gem::Platform::RUBY
   s.authors = ["Carlos Manzanares"]
-  s.email = ["developers@telcoassetmarketplace.com"]
-  s.homepage = "https://github.com/tamdeveloper/telco-asset-marketplace-gem"
-  s.description = %q{The Ruby gem for the telco asset marketplace REST APIs}
-  s.summary = "telco asset marketplace Ruby gem"
+  s.email = ["developers@creatary.com"]
+  s.homepage = "https://github.com/creatary/creatary-ruby-sdk"
+  s.description = %q{The Ruby gem for the Creatary REST APIs}
+  s.summary = "Creatary Ruby gem"
   s.rubyforge_project = s.name
 
   s.required_rubygems_version = Gem::Requirement.new('>= 1.3.6') if s.respond_to? :required_rubygems_version=
@@ -34,10 +34,10 @@ Gem::Specification.new do |s|
 ********************************************************************************
 
   Visit our community pages for up-to-date information on 
-  telco asset marketplace:
-      https://code.telcoassetmarketplace.com/
+  Creatary:
+      https://creatary.com/
   Notice that in order to use this gem you will also need to register as a 
-  developer in telco asset marketplace:
+  developer in Creatary:
       https://telcoassetmarketplace.com
 
 ********************************************************************************  

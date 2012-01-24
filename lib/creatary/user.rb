@@ -1,5 +1,5 @@
-module TAM
-  # Represents an end-user of telco asset marketplace (a subscriber)
+module Creatary
+  # Represents an end-user of Creatary (a subscriber)
   class User
     attr_accessor :access_token
     attr_accessor :token_secret

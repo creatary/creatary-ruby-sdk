@@ -1,8 +1,8 @@
-require 'tam/railtie' if defined? ::Rails::Railtie
-require 'tam/configuration'
-require 'tam/api'
+require 'creatary/railtie' if defined? ::Rails::Railtie
+require 'creatary/configuration'
+require 'creatary/api'
 
-module TAM
+module Creatary
   extend Configuration
 
   # If in rails environment then we use the rails default logger
