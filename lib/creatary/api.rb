@@ -16,6 +16,7 @@ module Creatary
     require 'creatary/api/sms'
     require 'creatary/api/location'
     require 'creatary/api/charging'
+    require 'creatary/api/lifecycle'
     
     # Dispatches the request to the Creatary handler configured by 
     # this gem client

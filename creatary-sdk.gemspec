@@ -37,8 +37,7 @@ Gem::Specification.new do |s|
   Creatary:
       https://creatary.com/
   Notice that in order to use this gem you will also need to register as a 
-  developer in Creatary:
-      https://telcoassetmarketplace.com
+  developer in Creatary
 
 ********************************************************************************  
 eos

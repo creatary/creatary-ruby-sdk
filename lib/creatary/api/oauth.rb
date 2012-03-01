@@ -17,7 +17,11 @@ module Creatary
       session[:request_token] = request_token
       
       oauth_callback_url = url('/' + Creatary.callback_path + '/oauth_callback')
-      redirect request_token.authorize_url(:oauth_callback => oauth_callback_url)
+      if params[:subscription_tariff_name].nil?
+        redirect request_token.authorize_url(:oauth_callback => oauth_callback_url)
+      else
+        redirect request_token.authorize_url(:oauth_callback => oauth_callback_url, :subscription_tariff_name => params[:subscription_tariff_name])
+      end
     end
     
     # OAUTH callback for Creatary
@@ -29,7 +33,11 @@ module Creatary
         verifier = params[:oauth_verifier]
         access_token = request_token.get_access_token(:oauth_verifier => verifier)
         user = User.new(access_token.token, access_token.secret)
-        redirect url(dispatch_to_handler('authorized', user, session))
+        if params[:subscription_tariff_name].nil?
+          redirect url(dispatch_to_handler('authorized', user, session))
+        else
+          redirect url(dispatch_to_handler('authorized', user, session, params[:subscription_tariff_name]))
+        end
       else
         redirect url(dispatch_to_handler('denied', session))
       end
