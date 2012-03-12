@@ -42,7 +42,7 @@ module Creatary
       consumer = create_oauth_consumer
       access_token = OAuth::AccessToken.new(consumer, user.access_token, user.token_secret)
 
-      if (http_method == :get)
+      if (http_method == :get or http_method == :delete)
         response = access_token.send(http_method, endpoint, {'Content-Type' => 'application/json'})
       else
         response = access_token.send(http_method, endpoint, payload, {'Content-Type' => 'application/json'})

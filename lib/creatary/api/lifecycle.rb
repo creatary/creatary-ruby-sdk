@@ -34,5 +34,16 @@ module Creatary
         return error.message
       end
     end
+    
+    # Unregisters a user
+    # @return [Hash] 
+    #   {"status"=>{"code"=>0, "message"=>"Request was handled succesfully"}}
+    def self.unregister(user)
+      puts "here1"
+      response = dispatch_to_server(:delete, '/api/1/subscriberlifecycle/unsubscribe', user)
+      puts "here2"
+      JSON.parse response
+    end
+    
   end
 end
