@@ -1,3 +1,6 @@
+#
+# Copyright 2012 Nokia Siemens Networks 
+#
 module Creatary
   # Custom error class for rescuing from all Creatary errors
   class Error < StandardError

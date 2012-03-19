@@ -1,3 +1,6 @@
+#
+# Copyright 2012 Nokia Siemens Networks 
+#
 require 'sinatra'
 require 'oauth'
 require 'creatary/error'

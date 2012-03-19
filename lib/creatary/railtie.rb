@@ -1,3 +1,6 @@
+#
+# Copyright 2012 Nokia Siemens Networks 
+#
 require 'rails'
 
 module Creatary

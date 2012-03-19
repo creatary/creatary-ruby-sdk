@@ -1,3 +1,6 @@
+#
+# Copyright 2012 Nokia Siemens Networks 
+#
 require 'creatary/railtie' if defined? ::Rails::Railtie
 require 'creatary/configuration'
 require 'creatary/api'

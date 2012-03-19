@@ -1,3 +1,6 @@
+#
+# Copyright 2012 Nokia Siemens Networks 
+#
 module Creatary
   # Represents an end-user of Creatary (a subscriber)
   class User

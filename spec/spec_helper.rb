@@ -1,3 +1,6 @@
+#
+# Copyright 2012 Nokia Siemens Networks 
+#
 require 'simplecov'
 SimpleCov.start do
   add_filter "/spec/"

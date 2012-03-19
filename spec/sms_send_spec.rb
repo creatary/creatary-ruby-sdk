@@ -1,3 +1,6 @@
+#
+# Copyright 2012 Nokia Siemens Networks 
+#
 require 'spec_helper'
 require 'creatary/api'
 require 'creatary/user'

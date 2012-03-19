@@ -1,3 +1,6 @@
+#
+# Copyright 2012 Nokia Siemens Networks 
+#
 module Creatary
   # Defines constants and methods related to configuration
   module Configuration
