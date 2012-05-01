@@ -13,7 +13,8 @@ module Creatary
   LOGGER = 
     if defined? Rails 
       Rails.logger
-    else 
+    else
+      require 'logger'
       Logger.new(STDOUT)
     end
 
