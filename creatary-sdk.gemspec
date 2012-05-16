@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('json', '~> 1.5')
   s.add_runtime_dependency('oauth', '~> 0.4.3')
   
-  s.add_development_dependency('rake', '= 0.9.2')
-  s.add_development_dependency('rspec', '= 1.3.2')
+  s.add_development_dependency('rake', '0.9.2')
+  s.add_development_dependency('rspec', '1.3.2')
   s.add_development_dependency('rack-test', "~> 0.6.1")
   s.add_development_dependency('mocha', '~> 0.9.0')
   s.add_development_dependency('webmock', '~> 1.7.0')
