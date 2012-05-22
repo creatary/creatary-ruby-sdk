@@ -14,18 +14,18 @@ describe Creatary::API, "when sending sms" do
   
   it "should successfully send the request to platform" do
     #given
-    Creatary.expects(:consumer_key).twice().returns(ConsumerKey)
-    Creatary.expects(:consumer_secret).twice().returns(ConsumerSecret)
-    Creatary.expects(:site).returns(Site)
+    Creatary.expects(:consumer_key).twice().returns(OAuthSettings::ConsumerKey)
+    Creatary.expects(:consumer_secret).twice().returns(OAuthSettings::ConsumerSecret)
+    Creatary.expects(:site).returns(OAuthSettings::Site)
     Creatary.expects(:request_token_path).returns('/api/1/oauth/request_token')
     Creatary.expects(:access_token_path).returns('/api/1/oauth/access_token')
     Creatary.expects(:authorize_path).returns('/web/authorize')
     Creatary.expects(:oauth_scheme).returns(:query_string)
     Creatary.expects(:oauth_http_method).returns(:get)
-    http_stub = stub_request(:post, /.*\/api\/1\/sms\/send.*/).with { |request|  assert_request(request, { :query => OAuthParams, :body => "{\"body\":\"test message\",\"from\":\"to_app\"}"})}.to_return(:body => load_fixture("send_sms_success.json"))
+    http_stub = stub_request(:post, /.*\/api\/1\/sms\/send.*/).with { |request|  assert_request(request, { :query => OAuthSettings::OAuthParams, :body => "{\"body\":\"test message\",\"from\":\"to_app\"}"})}.to_return(:body => load_fixture("send_sms_success.json"))
                   
     #when
-    body = Creatary::API.send_sms("to_app", Creatary::User.new(AccessToken,  AccessSecret), 'test message')
+    body = Creatary::API.send_sms("to_app", Creatary::User.new(OAuthSettings::AccessToken,  OAuthSettings::AccessSecret), 'test message')
     
     #then
     http_stub.should have_been_requested.times(1)
@@ -35,18 +35,18 @@ describe Creatary::API, "when sending sms" do
   
   it "sends sms request with transaction id to platform" do
     #given
-    Creatary.expects(:consumer_key).twice().returns(ConsumerKey)
-    Creatary.expects(:consumer_secret).twice().returns(ConsumerSecret)
-    Creatary.expects(:site).returns(Site)
+    Creatary.expects(:consumer_key).twice().returns(OAuthSettings::ConsumerKey)
+    Creatary.expects(:consumer_secret).twice().returns(OAuthSettings::ConsumerSecret)
+    Creatary.expects(:site).returns(OAuthSettings::Site)
     Creatary.expects(:request_token_path).returns('/api/1/oauth/request_token')
     Creatary.expects(:access_token_path).returns('/api/1/oauth/access_token')
     Creatary.expects(:authorize_path).returns('/web/authorize')
     Creatary.expects(:oauth_scheme).returns(:query_string)
     Creatary.expects(:oauth_http_method).returns(:get)
-    http_stub = stub_request(:post, /.*\/api\/1\/sms\/send.*/).with { |request| assert_request(request, { :query => OAuthParams, :body => "{\"body\":\"test message\",\"from\":\"to_app\",\"transaction_id\":\"tran_id\"}"})}.to_return(:body => load_fixture("send_sms_success.json"))
+    http_stub = stub_request(:post, /.*\/api\/1\/sms\/send.*/).with { |request| assert_request(request, { :query => OAuthSettings::OAuthParams, :body => "{\"body\":\"test message\",\"from\":\"to_app\",\"transaction_id\":\"tran_id\"}"})}.to_return(:body => load_fixture("send_sms_success.json"))
                   
     #when
-    body = Creatary::API.send_sms("to_app", Creatary::User.new(AccessToken,  AccessSecret), 'test message', 'tran_id')
+    body = Creatary::API.send_sms("to_app", Creatary::User.new(OAuthSettings::AccessToken,  OAuthSettings::AccessSecret), 'test message', 'tran_id')
     
     #then
     http_stub.should have_been_requested.times(1)

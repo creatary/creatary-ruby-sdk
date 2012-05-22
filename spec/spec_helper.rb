@@ -11,7 +11,7 @@ module OAuthSettings
   AccessSecret = "secret"
   ConsumerKey = "consumer_key"
   ConsumerSecret = "consumer_secret"
-  Site = "https://telcoassetmarketplace.com"
+  Site = "https://creatary.com"
   
   OAuthParams = {"oauth_consumer_key" => /^#{ConsumerKey}$/, "oauth_signature_method" => /^HMAC-SHA1$/, "oauth_nonce" => /.+/,  "oauth_signature" => /.+/, "oauth_timestamp" => /^[0-9]+$/, "oauth_version" => /^1.0$/, "oauth_token" => /^#{AccessToken}$/}
 end

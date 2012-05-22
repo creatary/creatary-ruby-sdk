@@ -11,21 +11,21 @@ require 'webmock/rspec'
 describe Creatary::API, "#getcoord" do
   include WebMock::API
   include OAuthSettings
-  
+
   it "sends location request to platform" do
     #given
-    Creatary.expects(:consumer_key).twice().returns(ConsumerKey)
-    Creatary.expects(:consumer_secret).twice().returns(ConsumerSecret)
-    Creatary.expects(:site).returns(Site)
+    Creatary.expects(:consumer_key).twice().returns(OAuthSettings::ConsumerKey)
+    Creatary.expects(:consumer_secret).twice().returns(OAuthSettings::ConsumerKey)
+    Creatary.expects(:site).returns(OAuthSettings::Site)
     Creatary.expects(:request_token_path).returns('/api/1/oauth/request_token')
     Creatary.expects(:access_token_path).returns('/api/1/oauth/access_token')
     Creatary.expects(:authorize_path).returns('/web/authorize')
     Creatary.expects(:oauth_scheme).returns(:query_string)
     Creatary.expects(:oauth_http_method).returns(:get)
-    http_stub = stub_request(:get, /.*\/api\/1\/location\/getcoord.*/).with { |request| assert_query(request.uri, OAuthParams) }.to_return(:body => load_fixture("getcoord_success.json"))
+    http_stub = stub_request(:get, /.*\/api\/1\/location\/getcoord.*/).with { |request| assert_query(request.uri, OAuthSettings::OAuthParams) }.to_return(:body => load_fixture("getcoord_success.json"))
                   
     #when
-    body = Creatary::API.getcoord(Creatary::User.new(AccessToken, AccessSecret))
+    body = Creatary::API.getcoord(Creatary::User.new(OAuthSettings::AccessToken, OAuthSettings::AccessSecret))
     
     #then
     http_stub.should have_been_requested.times(1)
