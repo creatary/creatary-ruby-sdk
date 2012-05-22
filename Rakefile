@@ -1,40 +1,12 @@
-begin
-  require "bundler"
-  Bundler.setup
-rescue LoadError
-  $stderr.puts "You need to have Bundler installed to be able build this gem."
-end
+#!/usr/bin/env rake
+require 'bundler/gem_tasks'
+require 'rspec/core/rake_task'
 
-gemspec = eval(File.read(Dir["*.gemspec"].first))
+desc 'Default: run specs.'
+task :default => :spec
 
+desc "Run specs"
+RSpec::Core::RakeTask.new
 
-desc "Validate the gemspec"
-task :gemspec do
-  gemspec.validate
-end
-
-desc "Build gem locally"
-task :build => :gemspec do
-  system "gem build #{gemspec.name}.gemspec"
-  FileUtils.mkdir_p "pkg"
-  FileUtils.mv "#{gemspec.name}-#{gemspec.version}.gem", "pkg"
-end
-
-desc "Install gem locally"
-task :install => :build do
-  system "gem install pkg/#{gemspec.name}-#{gemspec.version}"
-end
-
-desc "Clean automatically generated files"
-task :clean do
-  FileUtils.rm_rf "pkg"
-end
-
-require 'spec/rake/spectask'
-
-Spec::Rake::SpecTask.new(:spec) do |t|
-  t.spec_files = Dir.glob('spec/**/*_spec.rb')
-end
-
-desc "Run tests"
+desc 'Run specs'
 task :default => :spec
